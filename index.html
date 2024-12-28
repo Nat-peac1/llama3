@@ -76,6 +76,8 @@
             border-radius: 5px;
             box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
             transition: transform 0.1s ease-in-out;
+            font-weight: bold; /* เพิ่ม font-weight: bold */
+            color: #000; /* เพิ่ม color: #000 */
         }
         .button:hover {
             transform: translate(1px,1px);
@@ -159,19 +161,16 @@
             const b = Math.floor(Math.random() * 100 + 155);
             return `rgb(${r}, ${g}, ${b})`;
         }
-       function setButtonStyles(button) {
+         function setButtonPastelColor(button) {
             button.style.backgroundColor = randomPastelColor();
-             button.style.fontWeight = "bold";
-             button.style.color = "black";
         }
 
         function changeButtonColor() {
-            setButtonStyles(submitBtn);
-             setButtonStyles(clearBtn);
+            setButtonPastelColor(submitBtn);
+            setButtonPastelColor(clearBtn);
         }
        setInterval(changeButtonColor, 3000);
         changeButtonColor();
-
         submitBtn.addEventListener('click', () => {
             if (xprompt.value.trim() !== '') {
                 const userText = '> ' + xprompt.value + '\n';
