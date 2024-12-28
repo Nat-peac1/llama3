@@ -159,24 +159,19 @@
             const b = Math.floor(Math.random() * 100 + 155);
             return `rgb(${r}, ${g}, ${b})`;
         }
-         function setButtonPastelColor(button) {
+       function setButtonStyles(button) {
             button.style.backgroundColor = randomPastelColor();
-            button.style.color = getInvertColor(button.style.backgroundColor);
-        }
-
-        function getInvertColor(color) {
-            const r = parseInt(color.substring(4, color.indexOf(',')).trim());
-            const g = parseInt(color.substring(color.indexOf(',') + 1, color.lastIndexOf(',')).trim());
-            const b = parseInt(color.substring(color.lastIndexOf(',') + 1, color.indexOf(')')).trim());
-            return `rgb(${255 - r}, ${255 - g}, ${255 - b})`;
+             button.style.fontWeight = "bold";
+             button.style.color = "black";
         }
 
         function changeButtonColor() {
-            setButtonPastelColor(submitBtn);
-            setButtonPastelColor(clearBtn);
+            setButtonStyles(submitBtn);
+             setButtonStyles(clearBtn);
         }
        setInterval(changeButtonColor, 3000);
         changeButtonColor();
+
         submitBtn.addEventListener('click', () => {
             if (xprompt.value.trim() !== '') {
                 const userText = '> ' + xprompt.value + '\n';
@@ -228,10 +223,9 @@
                 const payload = {
                   "messages": [{"role": "user", "content": message+nat}],
                   "model": "llama3-groq-70b-8192-tool-use-preview",
-",
-                  "temperature": 1,
+                  "temperature": 0.5,
                   "max_tokens": 1024,
-                  "top_p": 1,
+                  "top_p": 0.65,
                   "stop": null
                 };
               try {
